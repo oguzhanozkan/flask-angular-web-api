@@ -1,0 +1,29 @@
+<div class="content-wrapper">
+  <div class="text-center">
+      <h1 class="text-center">FAVORITES</h1>
+      <a class="btn btn-info" href="/rss" role="button">RSS FEED LIST</a>
+    </div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">title</th>
+          <th scope="col">link</th>
+          <th scope="col">description</th>
+          <th scope="col">updated</th>
+          <th scope="col">location</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rss of rss | paginate: { itemsPerPage: 10, currentPage: pageCurrent }; let i = index">
+          <th scope="row">{{i + 1}}</th>
+          <td>{{rss.title}}</td>
+          <td>{{rss.link}}</td>
+          <td>{{rss.description}}</td>
+          <td>{{rss.updated | date: 'dd.MM.yyyy/hh:mm:ss'}}</td>
+          <td>{{rss.location}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <pagination-controls (pageChange)="pageCurrent = $event"></pagination-controls>
+</div>

@@ -1,0 +1,20 @@
+<div class="content-wrapper">
+  <div class="text-center">
+    <h1 class="text-center">RSS DETAILS</h1>
+  </div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">description</th>
+        <th scope="col">link</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{rss_description}}</td>
+        <td>{{rss_link}} </td>
+      </tr>
+    </tbody>
+    <button (click)="AddFav(id)" type="button" class="btn btn-success">ADD FAV</button>
+  </table>
+</div>

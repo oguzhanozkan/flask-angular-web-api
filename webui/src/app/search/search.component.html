@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mt-5 mx-auto">
+            <form (submit)="search()">
+                <div class="form-group">
+                    <label for="example-datetime-local-input">Start Date</label>
+                    <input class="form-control" type="datetime-local" name="start_date" [(ngModel)]="dates.start_date">
+                </div>
+                <div class="form-group">
+                    <label for="example-datetime-local-input">End Date</label>
+                    <input class="form-control" type="datetime-local" name="end_date" [(ngModel)]="dates.end_date">
+                </div>
+                <button type="submit" class="btn btn-lg btn-primary btn-block">Search</button>
+            </form>
+        </div>
+    </div>
+    <div class="panel panel-default" *ngIf="rss">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">title</th>
+                    <th scope="col">updated</th>
+                    <th scope="col">location</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let res of rss | paginate: { itemsPerPage: 10, currentPage: pageCurrent }; let i = index">
+                    <th scope="row">{{i + 1}}</th>
+                    <td>{{res.title}}</td>
+                    <td>{{res.updated | date: 'dd.MM.yyyy/hh:mm:ss'}}</td>
+                    <td>{{res.location}}</td>
+                </tr>
+            </tbody>
+        </table>
+      <pagination-controls (pageChange)="pageCurrent = $event"></pagination-controls>
+    </div>
+</div>
